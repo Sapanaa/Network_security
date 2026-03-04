@@ -62,7 +62,7 @@ jobs:
 
         # Build Docker image
         - name: Build Docker Image
-          run: docker build -t network-security .
+          run: docker build -t network_security .
 
         # Tag Docker image
         - name: Tag Docker Image
