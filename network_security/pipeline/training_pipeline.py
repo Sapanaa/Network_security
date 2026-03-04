@@ -29,7 +29,6 @@ from network_security.entity.artifact_entity import (
 # from networksecurity.constant.training_pipeline import SAVED_MODEL_DIR
 
 
-
 class TrainingPipeline:
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
