@@ -1,9 +1,14 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "network-security"
 version = "0.1.0"
-description = "Add your description here"
+description = "Network security ML pipeline"
 readme = "README.md"
 requires-python = ">=3.12"
+
 dependencies = [
     "fastapi>=0.135.1",
     "mlflow>=3.10.0",
@@ -11,5 +16,8 @@ dependencies = [
     "pandas>=2.3.3",
     "pymongo>=4.16.0",
     "scikit-learn>=1.8.0",
-    "uvicorn>=0.41.0",
+    "uvicorn>=0.41.0"
 ]
+
+[tool.setuptools.packages.find]
+include = ["network_security*"]
