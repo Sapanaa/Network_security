@@ -7,13 +7,15 @@ import pickle
 from sklearn.metrics import r2_score
 from sklearn.model_selection import GridSearchCV
 
+
 def read_yaml_file(file_path: str) -> dict:
     try:
         with open(file_path, "rb") as yaml_file:
             return yaml.safe_load(yaml_file)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
-    
+
+
 def write_yaml_file(file_path: str, content: object, replace=False):
     try:
         if replace:
@@ -24,7 +26,8 @@ def write_yaml_file(file_path: str, content: object, replace=False):
             yaml.dump(content, file)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
-    
+
+
 def save_numpy_array_data(file_path: str, array: np.array):
     """
     Save numpy array data to file
@@ -38,7 +41,7 @@ def save_numpy_array_data(file_path: str, array: np.array):
             np.save(file_obj, array)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
-    
+
 
 def save_object(file_path: str, obj: object) -> None:
     try:
@@ -50,7 +53,8 @@ def save_object(file_path: str, obj: object) -> None:
         logging.info("Saved the model to location: %s", file_path)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
-    
+
+
 def load_object(file_path: str) -> object:
     try:
         if not os.path.exists(file_path):
@@ -59,6 +63,7 @@ def load_object(file_path: str) -> object:
             return pickle.load(file_obj)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
+
 
 def load_numpy_array_data(file_path: str) -> np.array:
     """
@@ -71,7 +76,7 @@ def load_numpy_array_data(file_path: str) -> np.array:
             return np.load(file_obj)
     except Exception as e:
         raise NetworkSecurityException(e, sys)
-    
+
 
 def evaluate_models(X_train, y_train, X_test, y_test, models, params):
     try:

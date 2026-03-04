@@ -29,7 +29,7 @@ class DataIngestionConfig:
         self.feature_store_file_path = os.path.join(
             self.data_ingestion_dir,
             training_pipeline.DATA_INGESTION_FEATURE_STORE_DIR,
-            training_pipeline.FILE_NAME
+            training_pipeline.FILE_NAME,
         )
         self.ingested_dir = os.path.join(
             self.data_ingestion_dir,
@@ -41,7 +41,9 @@ class DataIngestionConfig:
         self.test_file_path = os.path.join(
             self.ingested_dir, training_pipeline.TEST_FILE_NAME
         )
-        self.train_test_split_ratio = training_pipeline.DATA_INGESTION_TRAIN_TEST_SPLIT_RATION
+        self.train_test_split_ratio = (
+            training_pipeline.DATA_INGESTION_TRAIN_TEST_SPLIT_RATION
+        )
         self.collection_name = training_pipeline.DATA_INGESTION_COLLECTION_NAME
         self.database_name = training_pipeline.DATA_INGESTION_DATABASE_NAME
 
@@ -56,23 +58,19 @@ class DataValidationConfig:
             self.data_validation_dir,
             training_pipeline.DATA_VALIDATION_VALID_DIR,
         )
-        self.invalid_train_file_path= os.path.join(
-            self.data_validation_dir,
-            training_pipeline.TRAIN_FILE_NAME
+        self.invalid_train_file_path = os.path.join(
+            self.data_validation_dir, training_pipeline.TRAIN_FILE_NAME
         )
-        self.invalid_test_file_path= os.path.join(
-            self.data_validation_dir,
-            training_pipeline.TEST_FILE_NAME
+        self.invalid_test_file_path = os.path.join(
+            self.data_validation_dir, training_pipeline.TEST_FILE_NAME
         )
-        self.valid_train_file_path= os.path.join(
-            self.data_validation_dir,
-            training_pipeline.TRAIN_FILE_NAME
+        self.valid_train_file_path = os.path.join(
+            self.data_validation_dir, training_pipeline.TRAIN_FILE_NAME
         )
-        self.valid_test_file_path= os.path.join(
-            self.data_validation_dir,
-            training_pipeline.TEST_FILE_NAME
+        self.valid_test_file_path = os.path.join(
+            self.data_validation_dir, training_pipeline.TEST_FILE_NAME
         )
-        self.drift_report_file_path= os.path.join(
+        self.drift_report_file_path = os.path.join(
             self.data_validation_dir,
             training_pipeline.DATA_VALIDATION_DRIFT_REPORT_DIR,
             training_pipeline.DATA_VALIDATION_DRIFT_REPORT_FILE_NAME,
@@ -101,6 +99,7 @@ class DataTransformationConfig:
             training_pipeline.PREPROCESSING_OBJECT_FILE_NAME,
         )
 
+
 class ModelTrainerConfig:
     def __init__(self, training_pipeline_config: TrainingPipelineConfig):
         self.model_trainer_dir = os.path.join(
@@ -113,4 +112,6 @@ class ModelTrainerConfig:
             training_pipeline.MODEL_TRAINER_TRAINED_MODEL_NAME,
         )
         self.expected_score = training_pipeline.MODEL_TRAINER_EXPECTED_SCORE
-        self.overfitting_underfitting_threshold = training_pipeline.MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD
+        self.overfitting_underfitting_threshold = (
+            training_pipeline.MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD
+        )

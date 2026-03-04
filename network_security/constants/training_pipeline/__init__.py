@@ -26,7 +26,6 @@ DATA_INGESTION_INGESTED_DIR = "ingested"
 DATA_INGESTION_TRAIN_TEST_SPLIT_RATION = 0.2
 
 
-
 SCHEMA_FILE_PATH = os.path.join("data_schema", "schema.yaml")
 """
 Data Validation related constant 
