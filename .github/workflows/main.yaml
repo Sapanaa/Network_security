@@ -75,3 +75,32 @@ jobs:
           run: |
             docker push \
             ${{ steps.login-ecr.outputs.registry }}/network_security:latest
+
+
+  deploy:
+      name: Continuous Deployment
+      runs-on: self-hosted
+      needs: build-and-push
+
+      steps:
+        - name: Configure AWS Credentials
+          uses: aws-actions/configure-aws-credentials@v4
+          with:
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+            aws-region: eu-north-1
+
+        - name: Login to Amazon ECR
+          id: login-ecr
+          uses: aws-actions/amazon-ecr-login@v2
+
+        - name: Pull latest image
+          run: |
+            docker pull ${{ steps.login-ecr.outputs.registry }}/network_security:latest
+
+        - name: Restart container
+          run: |
+            docker stop network_security || true
+            docker rm network_security || true
+            docker run -d -p 8000:8000 --name network_security \
+            ${{ steps.login-ecr.outputs.registry }}/network_security:latest
