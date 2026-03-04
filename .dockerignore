@@ -1,0 +1,12 @@
+.git
+.gitignore
+__pycache__
+build
+dist
+*.pyc
+*.pyo
+*.pyd
+.venv
+.env
+mlruns
+mlartifacts
