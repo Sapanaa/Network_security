@@ -202,17 +202,6 @@ You will see the interactive **Swagger UI** for testing the API.
 
 ---
 
-## 📸 Screenshots
-
-Add screenshots here:
-
-```
-screenshots/pipeline_success.png
-screenshots/api_docs.png
-```
-
-
----
 
 ##  Author
 
