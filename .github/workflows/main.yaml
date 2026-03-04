@@ -1,0 +1,27 @@
+name: Network Security CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # ─── CI: Test & Lint ───────────────────────────────────────────
+  ci:
+    name: Continuous Integration
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Lint code
+        uses: echo "Linting repository"
+
+      - name: Test code
+        uses: echo "Testing repository"
