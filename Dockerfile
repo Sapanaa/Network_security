@@ -26,22 +26,6 @@ RUN mkdir -p prediction_output final_model templates
 # Expose the app port
 EXPOSE 8000
 
-# Run the app using uv
-CMD ["uv", "run", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-```
 
-And the `.dockerignore`:
-```
-.venv
-__pycache__
-*.pyc
-*.pyo
-*.pyd
-.env
-.git
-.gitignore
-*.egg-info
-dist
-build
-.mypy_cache
-.pytest_cache
+CMD ["uv", "run", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+
