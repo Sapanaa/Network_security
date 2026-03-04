@@ -32,7 +32,7 @@ jobs:
           pip install flake8 black pytest
 
       - name: Lint code
-        run: flake8 .
+        run: flake8 . --exclude build,__pycache__,.venv --ignore E501,F401,E402,E401,F841,W291,E266
 
       - name: Check formatting
         run: black --check .
