@@ -67,6 +67,13 @@ This project includes a CI/CD workflow using GitHub Actions.
   <em>Click to enlarge </em>
 </p>
 
+## FastAPI Prediction API
+<p align="center"> <img src="screenshots/fastapi_docs.png" width="500"/> </p>
+
+The trained machine learning model is deployed as a FastAPI service that exposes REST endpoints for training and prediction.
+
+FastAPI automatically generates interactive API documentation (Swagger UI), allowing users to test endpoints directly from the browser.
+
 ## Automated Deployment using GitHub Actions Runner (AWS EC2)
 <p align="center"> <img src="screenshots/ec2_runner.png" width="500"/> </p>
 
