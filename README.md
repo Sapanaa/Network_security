@@ -1,213 +1,88 @@
-# Network Security ML Pipeline 
+# Network Intrusion Detection – MLOps Pipeline
 
-This project implements an **end-to-end Machine Learning pipeline for network security threat detection**.
-It includes **data processing, model training, API deployment, containerization, and CI/CD automation**.
+**End-to-end machine learning pipeline for classifying network events as malicious or benign**  
+Built with modular components, artifact tracking, FastAPI serving, Docker, and CI/CD readiness for cloud deployment (AWS/Azure).
 
-The system predicts whether a network event is **malicious or safe** using a trained machine learning model.
+<p align="center">
+  <img src="docs/images/hero-banner.png" alt="Network Security ML Pipeline" width="900"/>
+  <br/>
+  <em>Automated ML from MongoDB ingestion to real-time prediction</em>
+</p>
 
----
+## 🎯 Problem & Business Value
 
-##  Project Features
+In modern cybersecurity, detecting threats in high-volume network traffic is critical.  
+This project delivers:
+- Automated data ingestion from MongoDB
+- Feature engineering & validation
+- Multi-model training & evaluation
+- Production-ready prediction API
+- Containerized deployment & CI/CD
+- Cloud push option (AWS/Azure) for production models
 
-* End-to-end **Machine Learning pipeline**
-* **Data ingestion and validation**
-* **Data transformation and preprocessing**
-* **Model training and evaluation**
-* **FastAPI prediction API**
-* **Docker containerization**
-* **CI/CD pipeline with GitHub Actions**
-* **Deployment using AWS**
+Reduces manual effort, improves reproducibility, and enables continuous retraining when drift occurs.
 
----
+## 🏗 MLOps Pipeline Architecture
 
-##  Project Architecture
+The system follows a production-grade MLOps flow:
 
-```
-                Developer
-                    │
-                    │  git push
-                    ▼
-           GitHub Repository
-        (source code & workflow)
-                    │
-                    ▼
-        GitHub Actions CI/CD Pipeline
-        ┌───────────────────────────┐
-        │ Install dependencies      │
-        │ Run lint checks           │
-        │ Run tests                 │
-        │ Build Docker image        │
-        └───────────────┬───────────┘
-                        │
-                        ▼
-               Docker Container Image
-                        │
-                        ▼
-          Amazon Elastic Container Registry
-                        │
-                        ▼
-                Self-hosted EC2 Runner
-                        │
-                        ▼
-                 Docker Container
-                        │
-                        ▼
-                 FastAPI Application
-                        │
-                        ▼
-                    REST API
-```
+<p align="center">
+  <img src="docs/images/your-pipeline-diagram.png" alt="MLOps Pipeline Flow" width="1000"/>
+  <br/>
+  <em>Click to enlarge – full flow with configs, artifacts, and cloud push decision</em>
+</p>
 
----
+**Key flow**:
+1. **Data Ingestion** ← MongoDB → DataIngestionArtifact
+2. **Validation** → checks schema, drift, completeness
+3. **Transformation** → feature engineering, scaling → TransformationArtifact
+4. **Model Training** → multiple algorithms + hyperparams → TrainerArtifact
+5. **Evaluation** → metrics → decide if model is accepted
+6. **Push** → if accepted → upload to cloud (AWS/Azure)
 
-##  Machine Learning Pipeline
+## 🔍 Component Breakdown
 
-```
-Dataset
-   │
-   ▼
-Data Ingestion
-   │
-   ▼
-Data Validation
-   │
-   ▼
-Data Transformation
-   │
-   ▼
-Model Training
-   │
-   ▼
-Model Evaluation
-   │
-   ▼
-Saved Model (.pkl)
-   │
-   ▼
-FastAPI Prediction API
-```
+Each stage is independent and configurable:
 
----
+| Stage                | Component File              | Key Responsibility                          | Output Artifact                  |
+|----------------------|-----------------------------|---------------------------------------------|----------------------------------|
+| Ingestion            | `data_ingestion.py`         | Read from MongoDB                           | Raw dataset artifact             |
+| Validation           | `data_validation.py`        | Schema check, drift detection               | Validation report                |
+| Transformation       | `data_transformation.py`    | Preprocessing, feature creation             | Transformed train/test files     |
+| Training             | `model_trainer.py`          | Multi-model training + selection            | Trained model + metrics          |
+| Evaluation           | (integrated in trainer)     | Compare models, select best                 | Evaluation artifact              |
+| Push (optional)      | `model_pusher.py`           | Upload to cloud if accepted                 | Cloud model location             |
 
-## 📂 Project Structure
+## 🚀 Quick Start (Local)
 
-```
-network_security
-│
-├── network_security
-│   ├── components
-│   │   ├── data_ingestion.py
-│   │   ├── data_validation.py
-│   │   ├── data_transformation.py
-│   │   └── model_trainer.py
-│   │
-│   ├── pipeline
-│   │   └── training_pipeline.py
-│   │
-│   ├── utils
-│   │   └── utils.py
-│   │
-│   ├── entity
-│   ├── exception
-│   └── logging
-│
-├── templates
-├── app.py
-├── Dockerfile
-├── pyproject.toml
-└── README.md
-```
+```bash
+# Clone & enter
+git clone https://github.com/your/network-security.git
+cd network-security
 
----
+# Virtual env
+python -m venv .venv
+.venv\Scripts\activate  # Windows
 
-## 🚀 API Endpoints
+# Install
+pip install -e ".[dev]"
 
-### Home
+# Run API
+uvicorn app:app --reload --port 8000
 
-```
-GET /
-```
-
-Redirects to API documentation.
-
-### Train Model
-
-```
-GET /train
-```
-
-Triggers the ML training pipeline.
-
-### Predict
-
-```
-POST /predict
-```
-
-Upload a CSV file and receive predictions.
-
----
-
-##  Docker
-
-Build Docker image:
-
-```
-docker build -t network_security .
-```
-
-Run container:
-
-```
-docker run -p 8000:8000 network_security
-```
-
----
-
-##  CI/CD Pipeline
-
-The project uses **GitHub Actions** for CI/CD automation.
-
-Pipeline stages:
-
-1. Install dependencies
-2. Run lint checks
-3. Run tests
-4. Build Docker image
-5. Push image to container registry
-6. Deploy container
-
----
-
-##  Example API Documentation
-
-After running the application:
-
-```
+# Open docs
 http://localhost:8000/docs
-```
-
-You will see the interactive **Swagger UI** for testing the API.
-
----
-
-##  Technologies Used
-
-* Python
-* FastAPI
-* Scikit-learn
-* Docker
-* GitHub Actions
-* AWS
-
----
 
 
-##  Author
+## 🐳 Docker + Deployment
 
-Developed as part of a **Machine Learning / MLOps project** demonstrating:
+Containerize the application for consistent, portable deployment across environments.
 
-* ML pipeline engineering
-* API deployment
-* Docker containerization
-* CI/CD automation
+### Build & Run Locally
+
+```bash
+# Build the Docker image
+docker build -t network-security:latest .
+
+# Run the container (maps port 8000)
+docker run -p 8000:8000 --name ns-predictor network-security:latest
