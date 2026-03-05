@@ -50,7 +50,7 @@ Each stage is independent and configurable:
 
 ## MLFlow Experiment Tracking
 <p align="center">
-  <img src="screenshots/CICD_pipeline.png" alt="Machine learning Pipeline Flow" width="1000"/>
+  <img src="screenshots/mlflow.png" alt="Machine learning Pipeline Flow" width="600"/>
   <br/>
   <em>Click to enlarge </em>
 </p>
@@ -62,13 +62,13 @@ To ensure reproducible experimentation and model versioning, the pipeline integr
 This project includes a CI/CD workflow using GitHub Actions.
 
 <p align="center">
-  <img src="screenshots/CICD_pipeline.png" alt="CI/CD Pipeline Flow" width="1000"/>
+  <img src="screenshots/CICD_pipeline.png" alt="CI/CD Pipeline Flow" width="500"/>
   <br/>
   <em>Click to enlarge </em>
 </p>
 
 ## Automated Deployment using GitHub Actions Runner (AWS EC2)
-<p align="center"> <img src="screenshots/ec2_runner.png" width="1000"/> </p>
+<p align="center"> <img src="screenshots/ec2_runner.png" width="500"/> </p>
 
 This project uses a self-hosted GitHub Actions runner deployed on an AWS EC2 instance to enable automated continuous deployment of the machine learning API.
 
