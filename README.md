@@ -22,7 +22,7 @@ Reduces manual effort, improves reproducibility, and enables continuous retraini
 The system follows a production-grade flow:
 
 <p align="center">
-  <img src="screenshots/architecture.png.png" alt="Machine learning Pipeline Flow" width="1000"/>
+  <img src="screenshots/architecture.png" alt="Machine learning Pipeline Flow" width="1000"/>
   <br/>
   <em>Click to enlarge </em>
 </p>
