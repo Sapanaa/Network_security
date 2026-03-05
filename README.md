@@ -3,11 +3,6 @@
 **End-to-end machine learning pipeline for classifying network events as malicious or benign**  
 Built with modular components, artifact tracking, FastAPI serving, Docker, and CI/CD readiness for cloud deployment (AWS/Azure).
 
-<p align="center">
-  <img src="docs/images/hero-banner.png" alt="Network Security ML Pipeline" width="900"/>
-  <br/>
-  <em>Automated ML from MongoDB ingestion to real-time prediction</em>
-</p>
 
 ## 🎯 Problem & Business Value
 
@@ -22,14 +17,14 @@ This project delivers:
 
 Reduces manual effort, improves reproducibility, and enables continuous retraining when drift occurs.
 
-## 🏗 MLOps Pipeline Architecture
+## 🏗 Machine Learning Pipeline Architecture
 
-The system follows a production-grade MLOps flow:
+The system follows a production-grade flow:
 
 <p align="center">
-  <img src="docs/images/your-pipeline-diagram.png" alt="MLOps Pipeline Flow" width="1000"/>
+  <img src="screenshots/architecture.png.png" alt="Machine learning Pipeline Flow" width="1000"/>
   <br/>
-  <em>Click to enlarge – full flow with configs, artifacts, and cloud push decision</em>
+  <em>Click to enlarge </em>
 </p>
 
 **Key flow**:
