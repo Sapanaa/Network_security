@@ -4,7 +4,7 @@
 Built with modular components, artifact tracking, FastAPI serving, Docker, and CI/CD readiness for cloud deployment (AWS/Azure).
 
 
-## 🎯 Problem & Business Value
+##  Problem & Business Value
 
 In modern cybersecurity, detecting threats in high-volume network traffic is critical.  
 This project delivers:
@@ -17,7 +17,7 @@ This project delivers:
 
 Reduces manual effort, improves reproducibility, and enables continuous retraining when drift occurs.
 
-## 🏗 Machine Learning Pipeline Architecture
+##  Machine Learning Pipeline Architecture
 
 The system follows a production-grade flow:
 
@@ -47,6 +47,54 @@ Each stage is independent and configurable:
 | Training             | `model_trainer.py`          | Multi-model training + selection            | Trained model + metrics          |
 | Evaluation           | (integrated in trainer)     | Compare models, select best                 | Evaluation artifact              |
 | Push (optional)      | `model_pusher.py`           | Upload to cloud if accepted                 | Cloud model location             |
+
+## MLFlow Experiment Tracking
+<p align="center">
+  <img src="screenshots/CICD_pipeline.png" alt="Machine learning Pipeline Flow" width="1000"/>
+  <br/>
+  <em>Click to enlarge </em>
+</p>
+
+To ensure reproducible experimentation and model versioning, the pipeline integrates MLflow for experiment tracking.
+
+##  CI/CD Pipeline Architecture
+
+This project includes a CI/CD workflow using GitHub Actions.
+
+<p align="center">
+  <img src="screenshots/CICD_pipeline.png" alt="CI/CD Pipeline Flow" width="1000"/>
+  <br/>
+  <em>Click to enlarge </em>
+</p>
+
+## Automated Deployment using GitHub Actions Runner (AWS EC2)
+<p align="center"> <img src="screenshots/ec2_runner.png" width="1000"/> </p>
+
+This project uses a self-hosted GitHub Actions runner deployed on an AWS EC2 instance to enable automated continuous deployment of the machine learning API.
+
+Deployment Workflow
+
+1. Code Push to GitHub
+
+When new code is pushed to the repository, the GitHub Actions workflow is triggered.
+
+2. GitHub Actions Job Execution
+
+The workflow is executed on a self-hosted runner running inside an EC2 instance.
+
+3. Runner Configuration
+
+The EC2 instance registers itself with GitHub as a self-hosted runner.
+
+This allows CI/CD jobs to execute directly on the cloud infrastructure.
+
+4. Docker Image Deployment
+
+The pipeline builds the Docker image and prepares the application for deployment.
+
+5. Live API Service
+
+The FastAPI service runs on the EC2 instance and provides real-time prediction endpoints.
 
 ## 🚀 Quick Start (Local)
 
