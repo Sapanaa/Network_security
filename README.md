@@ -122,16 +122,19 @@ cd network-security
 # Install
 uv sync
 
-```markdown
-Dependencies are managed using **uv**, a fast Python package manager that ensures reproducible builds using the `uv.lock` file.
-
 # Run API
 uvicorn app:app --reload --port 8000
 
 # Open docs
 http://localhost:8000/docs
 
+```
 
+```markdown
+Dependencies are managed using **uv**, a fast Python package manager that ensures reproducible builds using the `uv.lock` file.
+```
+
+```bash
 ## 🐳 Docker + Deployment
 
 Containerize the application for consistent, portable deployment across environments.
