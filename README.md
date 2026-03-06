@@ -1,6 +1,6 @@
 # Network Intrusion Detection – MLOps Pipeline
 
-![Python](https://img.shields.io/badge/python-3.10-blue)
+![Python](https://img.shields.io/badge/python-3.12-blue)
 ![Docker](https://img.shields.io/badge/docker-ready-blue)
 ![MLflow](https://img.shields.io/badge/mlflow-tracking-green)
 ![FastAPI](https://img.shields.io/badge/fastapi-serving-green)
@@ -111,17 +111,19 @@ The FastAPI service runs on the EC2 instance and provides real-time prediction e
 
 ## 🚀 Quick Start (Local)
 
+
+
 ```bash
 # Clone & enter
 git clone https://github.com/your/network-security.git
 cd network-security
 
-# Virtual env
-python -m venv .venv
-.venv\Scripts\activate  # Windows
 
 # Install
-pip install -e ".[dev]"
+uv sync
+
+```markdown
+Dependencies are managed using **uv**, a fast Python package manager that ensures reproducible builds using the `uv.lock` file.
 
 # Run API
 uvicorn app:app --reload --port 8000
