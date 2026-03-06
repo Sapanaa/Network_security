@@ -1,5 +1,11 @@
 # Network Intrusion Detection – MLOps Pipeline
 
+![Python](https://img.shields.io/badge/python-3.10-blue)
+![Docker](https://img.shields.io/badge/docker-ready-blue)
+![MLflow](https://img.shields.io/badge/mlflow-tracking-green)
+![FastAPI](https://img.shields.io/badge/fastapi-serving-green)
+![AWS](https://img.shields.io/badge/aws-cloud-orange)
+
 **End-to-end machine learning pipeline for classifying network events as malicious or benign**  
 Built with modular components, artifact tracking, FastAPI serving, Docker, and CI/CD readiness for cloud deployment (AWS/Azure).
 
@@ -68,7 +74,7 @@ This project includes a CI/CD workflow using GitHub Actions.
 </p>
 
 ## FastAPI Prediction API
-<p align="center"> <img src="screenshots/fastapi_docs.png" width="500"/> </p>
+<p align="center"> <img src="screenshots/fastapi.png" width="500"/> </p>
 
 The trained machine learning model is deployed as a FastAPI service that exposes REST endpoints for training and prediction.
 
