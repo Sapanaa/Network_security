@@ -9,6 +9,11 @@
 **End-to-end machine learning pipeline for classifying network events as malicious or benign**  
 Built with modular components, artifact tracking, FastAPI serving, Docker, and CI/CD readiness for cloud deployment (AWS/Azure).
 
+<p align="center">
+  <img src="screenshots/visual_selection.png" alt="Pipeline Flow" width="1000"/>
+  <br/>
+
+</p>
 
 ##  Problem & Business Value
 
